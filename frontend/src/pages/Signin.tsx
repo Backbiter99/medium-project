@@ -3,8 +3,8 @@ import { Quote } from "../components/Quote";
 
 export const Signin = () => {
   return (
-    <div className="grid grid-cols-2">
-      <div>
+    <div className="lg:grid lg:grid-cols-2">
+      <div className="max-w-xl w-full mx-auto">
         <AuthSignin />
       </div>
       <div className="hidden lg:block">
