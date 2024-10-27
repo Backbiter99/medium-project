@@ -25,7 +25,7 @@ export const AuthSignin = () => {
 
   return (
     <div className="h-screen flex justify-center items-center flex-col">
-      <div className="text-3xl font-extrabold">Create an account</div>
+      <div className="text-3xl font-extrabold">Login to your Account</div>
       <div className="text-slate-500">
         Don't have an account?
         <Link className="pl-2 underline" to="/signup">
