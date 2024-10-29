@@ -71,3 +71,8 @@ userRouter.post("/signin", async (c) => {
   const jwt = await sign({ id: user.id }, c.env.JWT_SECRET);
   return c.json({ jwt });
 });
+
+userRouter.post("/signout", async (c) => {
+  console.log("User signed out");
+  return c.json({ message: "signed out" });
+});
