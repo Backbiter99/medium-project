@@ -1,4 +1,14 @@
-import { Link } from "react-router-dom";
+import {
+  DropdownMenu,
+  DropdownMenuItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from "@radix-ui/react-dropdown-menu";
+import axios from "axios";
+import { BACKEND_URL } from "../../config";
+import { LogOut } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
 interface BlogCardProps {
   authorName: string;
@@ -19,7 +29,7 @@ export const BlogCard = ({
     <Link to={`/blog/${id}`} className="w-full max-w-xl">
       <div className="w-full max-w-xl p-4 bg-white shadow-md rounded-lg cursor-pointer">
         <div className="flex items-center mb-4">
-          <Avatar name={authorName} />
+          <Avatar name={authorName} size="small" />
           <Circle />
           <div className="text-sm font-normal">{authorName}</div>
           <Circle />
@@ -31,6 +41,50 @@ export const BlogCard = ({
     </Link>
   );
 };
+
+export function AvatarDropdown({ name }: { name: string }) {
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      // Call the /signout endpoint
+      console.log("Calling /api/v1/user/signout...");
+      await axios.post(`${BACKEND_URL}/api/v1/user/signout`, {
+        headers: {
+          Authorization: `${localStorage.getItem("jwt")}`,
+        },
+      });
+
+      console.log("Removing JWT from localStorage...");
+      localStorage.removeItem("jwt");
+
+      // Navigate to the login page
+      console.log("Navigating to login page...");
+      navigate("/signin");
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button className="rounded-full p-1 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+          <Avatar name={name} />
+        </button>
+      </DropdownMenuTrigger>
+
+      <DropdownMenuContent className="w-48 bg-white dark:bg-gray-800 shadow-md rounded-md mt-2 py-2 border border-gray-200 dark:border-gray-700">
+        <DropdownMenuItem
+          onSelect={handleLogout}
+          className="flex items-center gap-2 px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition rounded-md cursor-pointer"
+        >
+          <LogOut className="w-5 h-5" />
+          <span>Logout</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
 
 export function Avatar({
   name,

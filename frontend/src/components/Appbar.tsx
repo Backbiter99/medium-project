@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Avatar } from "./BlogCard";
+import { AvatarDropdown } from "./BlogCard";
 
 export const Appbar = () => {
   return (
@@ -16,7 +16,7 @@ export const Appbar = () => {
             New
           </button>
         </Link>
-        <Avatar name="Username" size="big" />
+        <AvatarDropdown name="Username" />
       </div>
     </div>
   );
