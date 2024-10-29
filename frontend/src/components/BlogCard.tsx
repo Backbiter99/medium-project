@@ -3,7 +3,6 @@ import {
   DropdownMenuItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-  DropdownMenuSeparator,
 } from "@radix-ui/react-dropdown-menu";
 import axios from "axios";
 import { BACKEND_URL } from "../../config";
