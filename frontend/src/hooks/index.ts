@@ -10,6 +10,7 @@ export interface Blog {
   author: {
     name: string | null;
   };
+  publishDate?: Date | null;
 }
 
 export const useBlogs = () => {

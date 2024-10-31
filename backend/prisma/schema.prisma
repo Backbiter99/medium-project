@@ -26,7 +26,7 @@ model Post {
   title       String
   content     String
   published   Boolean  @default(false)
-  publishDate DateTime? // Optional: Nullable publish date field
+  publishDate DateTime? @default(now())
   author      User     @relation(fields: [authorId], references: [id])
   authorId    String
 }

@@ -10,7 +10,13 @@ export const FullBlog = ({ blog }: { blog: Blog }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="col-span-2 p-4 bg-white ">
             <div className="text-4xl font-extrabold mb-1">{blog.title}</div>
-            <div className="text-slate-500 mb-2">Posted on date blah blah</div>
+            <div className="text-slate-500 mb-2">
+              {blog.publishDate
+                ? `Posted on Date: ${new Date(
+                    blog.publishDate
+                  ).toLocaleDateString()}`
+                : "Loading date..."}
+            </div>
             <div className="text-slate-700">{blog.content}</div>
           </div>
           <div className="col-span-1 p-4 bg-white ">

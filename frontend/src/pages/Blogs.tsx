@@ -32,7 +32,11 @@ export const Blogs = () => {
                 authorName={blog.author.name ?? "Unknown"}
                 title={blog.title}
                 content={blog.content}
-                publishDate="24 Oct 2024"
+                publishDate={
+                  blog.publishDate
+                    ? new Date(blog.publishDate).toLocaleDateString()
+                    : "Unknown"
+                }
               />
             </div>
           ))

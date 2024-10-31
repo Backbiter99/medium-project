@@ -50,6 +50,7 @@ blogRouter.post("/", async (c) => {
       title: body.title,
       content: body.content,
       authorId: userId,
+      publishDate: new Date(),
     },
   });
 
@@ -97,6 +98,7 @@ blogRouter.get("/bulk", async (c) => {
           name: true,
         },
       },
+      publishDate: true,
     },
   });
 
@@ -125,6 +127,7 @@ blogRouter.get("/:id", async (c) => {
             name: true,
           },
         },
+        publishDate: true,
       },
     });
     return c.json(blog);
