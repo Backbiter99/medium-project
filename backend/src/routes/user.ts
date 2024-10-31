@@ -39,6 +39,7 @@ userRouter.post("/signup", async (c) => {
       jwt: token,
     });
   } catch (error) {
+    console.error("Error during signup:", error);
     c.status(403);
     return c.json({ error: "error while signing up || user already exists" });
   }
