@@ -1,5 +1,6 @@
 import { Blog } from "../hooks";
 import { Appbar } from "./Appbar";
+import { Avatar } from "./BlogCard";
 
 export const FullBlog = ({ blog }: { blog: Blog }) => {
   return (
@@ -15,7 +16,9 @@ export const FullBlog = ({ blog }: { blog: Blog }) => {
           <div className="col-span-1 p-4 bg-white ">
             <div className="font-medium">Author</div>
             <div className="flex justify-center items-center">
-              <div className="relative inline-flex items-center justify-center w-6 h-6 overflow-hidden bg-gray-300 rounded-full mx-2 min-w-6"></div>
+              <div className="mx-2">
+                <Avatar name={blog.author?.name || "Anonymous"} size="big" />
+              </div>
 
               <div>
                 <div className="text-xl font-bold mb-2">
